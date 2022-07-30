@@ -118,6 +118,7 @@
 .flex-content{
   flex-direction: column;
   display: flex;
+  max-width: 25%;
 }
 
 .margin-top-auto{
@@ -126,4 +127,17 @@
 
 .custom-text-white{
   color: #FFF;
+}
+
+.custom-header{
+  padding: 1em;
+}
+
+.vertical-align {
+  vertical-align: middle;
+}
+
+.custom-container {
+  flex-wrap: wrap;
+  // flex-direction: column;
 }

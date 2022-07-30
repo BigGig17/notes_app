@@ -1,21 +1,43 @@
-import React, { useState } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react'
 import NotePad from './components/Notes/NotePad'
 import Login from './components/Login/Login';
-
-// const API_URL = "http://localhost:3000/api/v1/notes"
+import useToken from './components/useToken';
+import useUser from './components/useUser';
+import configData from "./configData.json";
 
 function App() {
+  const { token, setToken } = useToken();
+  const {user, setUser} = useUser();
 
-  // const [token, setToken] = useState();
+  useEffect(() => {
+    document.body.style.backgroundColor = "#698fa5";
+  },[]);
+  async function logoutUser() {
+    return fetch(`${configData.API_URL}/users/sign_out`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then((response) => {
+        setToken('');
+     })
+   }
 
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
+   function handleSetUser(user){
+    setUser(user);
+   }
+
+  if(!token) {
+    return (
+      <Login setToken={setToken} setUser={handleSetUser} />
+    )
+  }
 
   return (
     <>
-      <NotePad />
+      <NotePad logout={logoutUser} user={user} token={token} />
       <footer>
         <ul className="nav justify-content-center border-bottom pb-3 mb-3">
           <li className="nav-item">

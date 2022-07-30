@@ -1,7 +1,5 @@
 import React from 'react'
 import Note from './note'
-// import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 class Notes extends React.Component {
@@ -24,7 +22,7 @@ class Notes extends React.Component {
   render(){
     return (
       <>
-          <ul className="nav nav-pills flex-column mb-auto">
+          <ul className="nav nav-pills flex-column mb-auto overflow-auto">
             {this.props.notes.sort((a ,b)=>{ return a.id - b.id }).map((note) => {
               return (
                 <li key={note.id} className='nav-item list-border' >

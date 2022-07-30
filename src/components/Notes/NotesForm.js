@@ -135,14 +135,7 @@ const NotesForm = ({ note, handleSetNote, handleDeleteNote }) => {
     extensions: [
       StarterKit,
     ],
-    content: note.body,
-    onUpdate: ({editor}) => {
-      const html = editor.getHTML();
-      // console.log(html)
-    },
-    onCreate: ({editor}) => {
-      editor.commands.setContent(note.body)
-    }
+    content: note.body
   })
 
   const titleRef = useRef();
