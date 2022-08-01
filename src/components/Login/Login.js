@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './login.scss';
-import configData from '../../configData.json'
 
 async function loginUser(credentials) {
- return fetch(`${configData.API_URL}/users/sign_in`, {
+ return fetch(`${process.env.REACT_APP_API_URL}/users/sign_in`, {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'

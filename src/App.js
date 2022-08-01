@@ -3,7 +3,6 @@ import NotePad from './components/Notes/NotePad'
 import Login from './components/Login/Login';
 import useToken from './components/useToken';
 import useUser from './components/useUser';
-import configData from "./configData.json";
 
 function App() {
   const { token, setToken } = useToken();
@@ -13,7 +12,7 @@ function App() {
     document.body.style.backgroundColor = "#698fa5";
   },[]);
   async function logoutUser() {
-    return fetch(`${configData.API_URL}/users/sign_out`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/users/sign_out`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

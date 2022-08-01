@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Notes from './../Notes/notes'
 import NotesForm from './../Notes/NotesForm'
 import axios from 'axios'
-import configData from "../../configData.json";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const API_URL = `${configData.API_URL}/api/v1/notes`
+const API_URL = `${process.env.REACT_APP_API_URL}/api/v1/notes`
 
 function NotePad({ logout, user, token }) {
 
@@ -90,7 +89,7 @@ function NotePad({ logout, user, token }) {
   return (
     <Container className="p-3" fluid={false} >
       <Row>
-        <Col className='custom-header'><h1 className='custom-text-white d-inline mb-2'>{configData.APP_TITLE}</h1>
+        <Col className='custom-header'><h1 className='custom-text-white d-inline mb-2'>{process.env.REACT_APP_APP_TITLE}</h1>
           <div className='d-inline float-end vertical-align mt-1'>
             <span className='text-white'>Welcome, {user?.name} </span>
             <button className='btn btn-sm btn-danger btn-sm m-2' onClick={logout}>Log Out</button>
