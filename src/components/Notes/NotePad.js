@@ -19,7 +19,7 @@ function NotePad({ logout, user, token }) {
     getAPIData().then((items) => {
       if(mounted) {
         setNotes(items);
-        if(setIndex != null && setIndex <= items.length){
+        if(setIndex != null && setIndex < items.length){
           setNote(items[setIndex])
         }
       }
@@ -109,7 +109,12 @@ function NotePad({ logout, user, token }) {
           </button>
         </Col>
         <Col className='notepad-flex'>
-          <NotesForm note={note} handleSetNote={handleSetNote} handleDeleteNote={handleDeleteNote}/>
+          { notes.length > 0 &&
+            <NotesForm note={note} handleSetNote={handleSetNote} handleDeleteNote={handleDeleteNote}/>
+          }
+          { notes.length === 0 && 
+            <h2 className='text-white text-center'>No Notes to Display</h2>
+          }
         </Col>
       </Row>
     </Container>
